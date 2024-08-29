@@ -1,54 +1,47 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchCampers } from "./operations.js";
-// import { selectFilters } from "./filterSlice.js";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
-const camperSlice = createSlice({
+export const fetchCampers = createAsyncThunk(
+  "campers/fetchCampers",
+  async (filters) => {
+    const response = await axios.get(
+      "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers",
+      {
+        params: filters,
+      }
+    );
+    return response.data;
+  }
+);
+
+const campersSlice = createSlice({
   name: "campers",
   initialState: {
-    items: [],
-    loading: false,
+    campers: [],
+    status: "idle",
     error: null,
   },
-  extraReducers: (builder) =>
+  reducers: {
+    resetCampers(state) {
+      state.campers = [];
+    },
+  },
+  extraReducers(builder) {
     builder
       .addCase(fetchCampers.pending, (state) => {
-        state.loading = true;
-        state.error = null;
+        state.status = "loading";
       })
       .addCase(fetchCampers.fulfilled, (state, action) => {
-        state.items = action.payload;
-        state.loading = false;
+        state.status = "succeeded";
+        state.campers = action.payload;
       })
       .addCase(fetchCampers.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.payload;
-      }),
-  // .addCase(fetchCampersById.pending, (state) => {
-  //   state.loading = true;
-  //   state.error = null;
-  // }),
-  // .addCase(fetchCampersById.fulfilled, (state, action) => {
-  //   const camperIndex = state.items.findIndex(
-  //     (e) => e.id === action.payload.id
-  //   );
-  //   if (camperIndex > -1) {
-  //     state.items[camperIndex] = action.payload;
-  //   }
-  //   state.loading = false;
-  // })
-  // .addCase(fetchCampersById.rejected, (state, action) => {
-  //   state.loading = false;
-  //   state.error = action.payload;
-  // }),
+        state.status = "failed";
+        state.error = action.error.message;
+      });
+  },
 });
 
-export const selectCampers = (state) => {
-  state.campers.items;
-};
-export const selectLoading = (state) => {
-  state.campers.loading;
-};
+export const { resetCampers } = campersSlice.actions;
 
-export const selectError = (state) => state.campers.error;
-
-export default camperSlice.reducer;
+export default campersSlice.reducer;

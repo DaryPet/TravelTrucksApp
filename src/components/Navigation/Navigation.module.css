@@ -1,4 +1,4 @@
-.list {
+/* .list {
   position: fixed;
   top: 0;
   left: 0;
@@ -27,4 +27,39 @@
   font-weight: bold;
   color: black;
   background-color: orchid;
+} */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background-color: #f8f9fa; /* Легкий серый фон, как на макете */
+  border-bottom: 2px solid #e5e5e5; /* Тонкая граница снизу */
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 40px; /* Примерный размер логотипа, ориентируясь на макет */
+}
+
+.navLinks {
+  display: flex;
+  gap: 24px; /* Расстояние между ссылками */
+}
+
+.link {
+  text-decoration: none;
+  color: #212529; /* Темный цвет текста, как на макете */
+  font-size: 16px;
+  font-weight: 500; /* Полужирный шрифт */
+  transition: color 0.2s;
+}
+
+.link:hover {
+  color: #0056b3;
 }
