@@ -56,10 +56,10 @@ export default function CamperCard({ camper }) {
                   Automatic
                 </span>
               )}
-              {camper.gas && (
+              {camper.tv && (
                 <span className={css.feature}>
                   <FaGasPump className={css.icon} />
-                  Gas
+                  TV
                 </span>
               )}
               {camper.kitchen && (
@@ -72,6 +72,18 @@ export default function CamperCard({ camper }) {
                 <span className={css.feature}>
                   <FaFan className={css.icon} />
                   AC
+                </span>
+              )}
+              {camper.radio && (
+                <span className={css.feature}>
+                  <FaFan className={css.icon} />
+                  Radio
+                </span>
+              )}
+              {camper.patrol && (
+                <span className={css.feature}>
+                  <FaFan className={css.icon} />
+                  Patrol
                 </span>
               )}
             </div>
