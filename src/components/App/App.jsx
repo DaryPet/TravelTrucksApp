@@ -29,7 +29,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/catalog" element={<CatalogPage />} />
           <Route path="/catalog/:id" element={<CamperDetailsPage />}>
-            <Route path="review" element={<CampersReviews />} />
+            <Route path="reviews" element={<CampersReviews />} />
             <Route path="features" element={<CampersFeatures />} />
           </Route>
           <Route path="*" element={<NotFoundPage />} />

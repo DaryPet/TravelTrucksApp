@@ -27,7 +27,7 @@ export default function CamperCard({ camper }) {
           <div className={css.header}>
             <h3 className={css.name}>{camper.name}</h3>
             <p className={css.price}>
-              €{camper.price.toFixed(2).replace(".", ",")}
+              €{camper.price.toFixed(2)}
               <button className={css.favoriteButton}>
                 <FaRegHeart className={css.likeIcon} />
               </button>
