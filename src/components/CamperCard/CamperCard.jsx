@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 import css from "./CamperCard.module.css";
+import { FaRegHeart, FaStar } from "react-icons/fa";
 import {
-  FaRegHeart,
-  FaStar,
-  FaMapMarkedAlt,
-  FaFan,
-  FaGasPump,
-  FaCarSide,
-  FaCoffee,
-} from "react-icons/fa";
+  BsWind,
+  BsDiagram3,
+  BsCupHot,
+  BsTv,
+  BsDroplet,
+  BsUiRadios,
+} from "react-icons/bs";
+import { IoMapOutline } from "react-icons/io5";
+import { MdLocalGasStation } from "react-icons/md";
 
 export default function CamperCard({ camper }) {
   const imageUrl =
@@ -27,7 +29,7 @@ export default function CamperCard({ camper }) {
           <div className={css.header}>
             <h3 className={css.name}>{camper.name}</h3>
             <p className={css.price}>
-              €{camper.price.toFixed(2)}
+              €{camper.price.toFixed(2).replace(".", ",")}
               <button className={css.favoriteButton}>
                 <FaRegHeart className={css.likeIcon} />
               </button>
@@ -43,7 +45,7 @@ export default function CamperCard({ camper }) {
               ({camper.reviews.length} Reviews)
             </span>
             <span className={css.location}>
-              <FaMapMarkedAlt className={css.locationIcon} /> {camper.location}
+              <IoMapOutline className={css.locationIcon} /> {camper.location}
             </span>
           </div>
           <div>
@@ -52,37 +54,43 @@ export default function CamperCard({ camper }) {
             <div className={css.features}>
               {camper.transmission && (
                 <span className={css.feature}>
-                  <FaCarSide className={css.icon} />
+                  <BsDiagram3 className={css.icon} />
                   Automatic
+                </span>
+              )}
+              {camper.transmission && (
+                <span className={css.feature}>
+                  <BsDroplet className={css.icon} />
+                  Bathroom
                 </span>
               )}
               {camper.tv && (
                 <span className={css.feature}>
-                  <FaGasPump className={css.icon} />
+                  <BsTv className={css.icon} />
                   TV
                 </span>
               )}
               {camper.kitchen && (
                 <span className={css.feature}>
-                  <FaCoffee className={css.icon} />
+                  <BsCupHot className={css.icon} />
                   Kitchen
                 </span>
               )}
               {camper.AC && (
                 <span className={css.feature}>
-                  <FaFan className={css.icon} />
+                  <BsWind className={css.icon} />
                   AC
                 </span>
               )}
               {camper.radio && (
                 <span className={css.feature}>
-                  <FaFan className={css.icon} />
+                  <BsUiRadios className={css.icon} />
                   Radio
                 </span>
               )}
               {camper.patrol && (
                 <span className={css.feature}>
-                  <FaFan className={css.icon} />
+                  <MdLocalGasStation className={css.icon} />
                   Patrol
                 </span>
               )}

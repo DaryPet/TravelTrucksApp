@@ -4,6 +4,7 @@ import { fetchCamperById } from "../../services/api.js";
 import { Suspense } from "react";
 import { IoMapOutline } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
+import clsx from "clsx";
 
 import css from "./CamperDetailsPage.module.css";
 
@@ -87,10 +88,20 @@ export default function CamperDetailsPage() {
       </div>
       <div className={css.moreInfo}>
         <ul className={css.links}>
-          <NavLink className={css.link} to="features">
+          <NavLink
+            className={({ isActive }) =>
+              clsx(css.link, { [css.linkActive]: isActive })
+            }
+            to="features"
+          >
             Features
           </NavLink>
-          <NavLink className={css.link} to="reviews">
+          <NavLink
+            className={({ isActive }) =>
+              clsx(css.link, { [css.linkActive]: isActive })
+            }
+            to="reviews"
+          >
             Reviews
           </NavLink>
         </ul>

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchCamperById } from "../../services/api.js";
-import { IoMapOutline } from "react-icons/io5";
 import {
   BsWind,
   BsDiagram3,
@@ -9,9 +8,6 @@ import {
   BsTv,
   BsDroplet,
   BsUiRadios,
-  BsGrid1X2,
-  BsGrid,
-  BsGrid3X3Gap,
 } from "react-icons/bs";
 import { LuRefrigerator } from "react-icons/lu";
 import { MdLocalGasStation } from "react-icons/md";
