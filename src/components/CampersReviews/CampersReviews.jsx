@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchCamperById } from "../../services/api.js";
+import { FaStar } from "react-icons/fa";
 import css from "./CamperReviews.module.css";
+import clsx from "clsx";
 
 export default function CampersReviews() {
   const { id } = useParams();
@@ -35,16 +37,18 @@ export default function CampersReviews() {
             <li key={index} className={css.item}>
               <div className={css.reviewer}>
                 <div className={css.avatar}>{review.reviewer_name[0]}</div>
-                <div className={css.reviewerInfo}>
-                  <p className={css.reviewerName}>{review.reviewer_name}</p>
+                <div className={css.info}>
+                  <p className={css.name}>{review.reviewer_name}</p>
                   <div className={css.rating}>
-                    {Array(review.reviewer_rating)
-                      .fill()
-                      .map((_, i) => (
-                        <span key={i} className={css.star}>
-                          ⭐
-                        </span>
-                      ))}
+                    {[...Array(5)].map((_, i) => (
+                      <FaStar
+                        key={i}
+                        className={clsx({
+                          [css.activeStar]: i < review.reviewer_rating,
+                          [css.inactiveStar]: i >= review.reviewer_rating,
+                        })}
+                      />
+                    ))}
                   </div>
                 </div>
               </div>
