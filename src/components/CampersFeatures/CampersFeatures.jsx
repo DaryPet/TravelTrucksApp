@@ -1,8 +1,21 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchCamperById } from "../../services/api.js";
-import { BsWind, BsCupHot, BsTv, BsDroplet, BsUiRadios } from "react-icons/bs";
+import { IoMapOutline } from "react-icons/io5";
+import {
+  BsWind,
+  BsDiagram3,
+  BsCupHot,
+  BsTv,
+  BsDroplet,
+  BsUiRadios,
+  BsGrid1X2,
+  BsGrid,
+  BsGrid3X3Gap,
+} from "react-icons/bs";
+import { LuRefrigerator } from "react-icons/lu";
 import { MdLocalGasStation } from "react-icons/md";
+import { TbMicrowave } from "react-icons/tb";
 import css from "./CampersFeatures.module.css";
 
 export default function CampersFeatures() {
@@ -34,11 +47,11 @@ export default function CampersFeatures() {
     bathroom: <BsDroplet />,
     radio: <BsUiRadios />,
     gas: <MdLocalGasStation />,
-    refrigerator: <MdLocalGasStation />,
-    microwave: <MdLocalGasStation />,
-    water: <MdLocalGasStation />,
-    transmission: <BsWind />,
-    engine: <BsWind />,
+    refrigerator: <LuRefrigerator />,
+    microwave: <TbMicrowave />,
+    water: <BsDroplet />,
+    transmission: <BsDiagram3 />,
+    engine: <MdLocalGasStation />,
   };
 
   return (
