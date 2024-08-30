@@ -5,6 +5,7 @@ import CamperList from "../../components/CamperList/CamperList.jsx";
 import css from "./CatalogPage.module.css";
 import { selectCampers } from "../../redux/selectors.js";
 import Filters from "../../components/Filters/Filters.jsx";
+// import Pagination from "../../components/Pagination/Pagination.jsx";
 
 export default function CatalogPage() {
   const dispatch = useDispatch();
@@ -20,30 +21,14 @@ export default function CatalogPage() {
   }, [campers]);
 
   const handleFiltredChange = (values) => {
-    console.log("Values from form:", values);
     const filtred = campers.filter((camper) => {
-      console.log("Checking camper:", camper);
       const matchLocation = values.location
         ? camper.location.toLowerCase().includes(values.location.toLowerCase())
         : true;
 
-      // const matchEquipment =
-      //   values.equipment.lenth > 0
-      //     ? camper.equipment.every((equipmentItem) => {
-      //         console.log(
-      //           `Checking equipment ${equipmentItem}:`,
-      //           camper[equipmentItem]
-      //         );
-      //         return camper[equipmentItem] === true;
-      //       })
-      //     : true;
       const matchEquipment =
         values.equipment.length > 0
           ? values.equipment.every((equipmentItem) => {
-              console.log(
-                `Checking equipment ${equipmentItem}:`,
-                camper[equipmentItem]
-              );
               return camper[equipmentItem] === true;
             })
           : true;
@@ -52,21 +37,20 @@ export default function CatalogPage() {
         ? camper.form === values.vehicleType
         : true;
 
-      console.log("matchLocation:", matchLocation);
-      console.log("matchVehicleType:", matchVehicleType);
-      console.log("matchEquipment:", matchEquipment);
-
       return matchLocation && matchEquipment && matchVehicleType;
     });
-    console.log("Filtered campers:", filtered);
     setFiltredCampers(filtred);
   };
-
   return (
     <div className={css.catalog}>
-      <h1 className={css.title}>Catalog</h1>
       <Filters onFilterChange={handleFiltredChange} />
-      <CamperList campers={filtredCampers} />
+      {filtredCampers.length > 0 ? (
+        <CamperList campers={filtredCampers} />
+      ) : (
+        <p className={css.noCampers}>
+          Sorry, no campers match your search! Try another one!
+        </p>
+      )}
     </div>
   );
 }

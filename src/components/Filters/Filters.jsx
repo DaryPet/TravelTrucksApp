@@ -1,4 +1,18 @@
 import { Formik, Form, Field } from "formik";
+import css from "./Filters.module.css";
+import { IoMapOutline } from "react-icons/io5";
+import {
+  BsWind,
+  BsDiagram3,
+  BsCupHot,
+  BsTv,
+  BsDroplet,
+  BsUiRadios,
+  BsGrid1X2,
+  BsGrid,
+  BsGrid3X3Gap,
+} from "react-icons/bs";
+import { MdLocalGasStation } from "react-icons/md";
 
 export default function Filters({ onFilterChange }) {
   const initialValues = {
@@ -14,23 +28,37 @@ export default function Filters({ onFilterChange }) {
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <Form>
-        <div>
-          <label htmlFor="location">Location</label>
-          <Field
-            type="text"
-            id="location"
-            name="location"
-            placeholder="Enter Location"
-          />
+        <div className={css.location}>
+          <label htmlFor="location" className={css.locationText}>
+            Location
+          </label>
+          <div className={css.inputWrapper}>
+            <IoMapOutline className={css.locationIcon} />
+            <Field
+              type="text"
+              id="location"
+              name="location"
+              placeholder="City"
+              className={css.locationForm}
+            />
+          </div>
         </div>
 
-        <div>
-          <h3>Vehicle equipment</h3>
-          <div>
+        <div className={css.equipmentWrapper}>
+          <h3 className={css.text}>Vehicle equipment</h3>
+          <div className={css.items}>
             <label htmlFor="AC">
-              <Field type="checkbox" id="ac" name="equipment" value="AC" />
-              <img src="../../../public/images" alt="AC" />
-              AC
+              <Field
+                type="checkbox"
+                id="ac"
+                name="equipment"
+                value="AC"
+                className={css.hiddenInput}
+              />
+              <div className={css.item}>
+                <BsWind className={css.icon} />
+                <span>AC</span>
+              </div>
             </label>
             <label htmlFor="automatic">
               <Field
@@ -38,9 +66,12 @@ export default function Filters({ onFilterChange }) {
                 id="automatic"
                 name="equipment"
                 value="automatic"
+                className={css.hiddenInput}
               />
-              <img src="../../../public/images" alt="automatic" />
-              Automatic
+              <div className={css.item}>
+                <BsDiagram3 className={css.icon} />
+                <span>Automatic</span>
+              </div>
             </label>
             <label htmlFor="kitchen">
               <Field
@@ -48,14 +79,25 @@ export default function Filters({ onFilterChange }) {
                 id="kitchen"
                 name="equipment"
                 value="kitchen"
+                className={css.hiddenInput}
               />
-              <img src="../../../public/images" alt="kitchen" />
-              Kitchen
+              <div className={css.item}>
+                <BsCupHot className={css.icon} />
+                <span>Kitchen</span>
+              </div>
             </label>
             <label htmlFor="tv">
-              <Field type="checkbox" id="tv" name="equipment" value="TV" />
-              <img src="../../../public/images" alt="tv" />
-              TV
+              <Field
+                type="checkbox"
+                id="tv"
+                name="equipment"
+                value="TV"
+                className={css.hiddenInput}
+              />
+              <div className={css.item}>
+                <BsTv className={css.icon} />
+                <span>TV</span>
+              </div>
             </label>
             <label htmlFor="bathroom">
               <Field
@@ -63,9 +105,12 @@ export default function Filters({ onFilterChange }) {
                 id="bathroom"
                 name="equipment"
                 value="bathroom"
+                className={css.hiddenInput}
               />
-              <img src="../../../public/images" alt="bathroom" />
-              Bathroom
+              <div className={css.item}>
+                <BsDroplet className={css.icon} />
+                <span>Bathroom</span>
+              </div>
             </label>
             <label htmlFor="radio">
               <Field
@@ -73,9 +118,12 @@ export default function Filters({ onFilterChange }) {
                 id="radio"
                 name="equipment"
                 value="radio"
+                className={css.hiddenInput}
               />
-              <img src="../../../public/images" alt="radio" />
-              Radio
+              <div className={css.item}>
+                <BsUiRadios className={css.icon} />
+                <span>Radio</span>
+              </div>
             </label>
             <label htmlFor="patrol">
               <Field
@@ -83,24 +131,31 @@ export default function Filters({ onFilterChange }) {
                 id="patrol"
                 name="equipment"
                 value="patrol"
+                className={css.hiddenInput}
               />
-              <img src="../../../public/images" alt="patrol" />
-              Patrol
+              <div className={css.item}>
+                <MdLocalGasStation className={css.icon} />
+                <span>Patrol</span>
+              </div>
             </label>
           </div>
         </div>
 
-        <div>
-          <h3>Vehicle type</h3>
-          <div>
+        <div className={css.typeWrapper}>
+          <h3 className={css.text}>Vehicle type</h3>
+          <div className={css.items}>
             <label htmlFor="van">
               <Field
                 type="radio"
                 id="van"
                 name="vehicleType"
                 value="panelTruck"
-              ></Field>
-              <img src="../../../public/images" alt="van" /> Van
+                className={css.hiddenInput}
+              />
+              <div className={css.item}>
+                <BsGrid1X2 className={css.icon} />
+                <span>Van</span>
+              </div>
             </label>
             <label htmlFor="fully-integrated">
               <Field
@@ -108,9 +163,13 @@ export default function Filters({ onFilterChange }) {
                 id="fully-integrated"
                 name="vehicleType"
                 value="fullyIntegrated"
-              ></Field>
-              <img src="../../../public/images" alt="fully-integrated" /> Fully
-              integrated
+                className={css.hiddenInput}
+              />
+              <div className={css.item}>
+                <BsGrid className={css.icon} />
+                <span>Fully</span>
+                <span>Integrated</span>
+              </div>
             </label>
             <label htmlFor="alcove">
               <Field
@@ -118,13 +177,18 @@ export default function Filters({ onFilterChange }) {
                 id="alcove"
                 name="vehicleType"
                 value="alcove"
-              ></Field>
-              <img src="../../../public/images" alt="alcove" />
-              Alcove
+                className={css.hiddenInput}
+              />
+              <div className={css.item}>
+                <BsGrid3X3Gap className={css.icon} />
+                <span>Alcove</span>
+              </div>
             </label>
           </div>
         </div>
-        <button type="submit">Search</button>
+        <button type="submit" className={css.button}>
+          Search
+        </button>
       </Form>
     </Formik>
   );

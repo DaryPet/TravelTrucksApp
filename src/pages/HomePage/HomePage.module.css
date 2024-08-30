@@ -61,7 +61,6 @@
   font-weight: 500;
   line-height: 24px; /* 150% */
   letter-spacing: -0.08px;
-  transition: background-color 0.3s ease;
 }
 .button:hover {
   background-color: #d84343;
