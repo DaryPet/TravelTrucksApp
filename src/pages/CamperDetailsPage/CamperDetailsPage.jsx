@@ -19,9 +19,7 @@ export default function CamperDetailsPage() {
         setError(false);
         setLoading(true);
         const response = await fetchCamperById(id);
-        console.log(response);
         setCamper(response);
-        console.log(response);
       } catch (error) {
         setError(true);
       } finally {
@@ -85,12 +83,6 @@ export default function CamperDetailsPage() {
         </div>
         <div>
           <p className={css.text}>{description}</p>
-          {/* <h3 className={css.blockTitles}>Features:</h3> */}
-          {/* <ul className={css.featuresList}>
-            {Object.entries(features).map(([key, value]) =>
-              value ? <li key={key}>{key}</li> : null
-            )}
-          </ul> */}
         </div>
       </div>
       <div className={css.moreInfo}>
