@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import { IoMapOutline } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import clsx from "clsx";
+import BookingForm from "../../components/BookingForm/BookingForm.jsx";
 
 import css from "./CamperDetailsPage.module.css";
 
@@ -116,6 +117,7 @@ export default function CamperDetailsPage() {
         >
           <Outlet />
         </Suspense>
+        <BookingForm />
       </div>
     </div>
   );
