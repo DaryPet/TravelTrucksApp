@@ -48,19 +48,21 @@
 
 .button {
   display: flex;
-  width: 173px;
+  width: 166px;
   padding: 16px 16px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
   border-radius: 200px;
   background: var(--Button, #e44848);
   color: var(--White, #fff);
+  justify-content: center;
+  align-items: center;
   font-family: Inter;
-  font-weight: 500;
-  line-height: 24px; /* 150% */
   letter-spacing: -0.08px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 24px;
+  transition: background-color 0.3s ease;
+  border: none;
 }
 .button:hover {
   background-color: #d84343;

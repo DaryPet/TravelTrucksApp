@@ -95,6 +95,7 @@
   text-decoration: none;
   margin-top: 24px;
   transition: background-color 0.3s ease;
+  border: none;
 }
 .moreButton:hover {
   background-color: #d84343;

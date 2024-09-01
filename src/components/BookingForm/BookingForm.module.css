@@ -3,11 +3,16 @@
   width: 641px;
   padding: 44px;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 24px;
   border-radius: 10px;
   border: 1px solid var(--Gray-light, #dadde1);
+}
+.titles {
+  display: flex;
+  width: 527px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
 }
 .title {
   color: var(--Main, #101828);
@@ -27,14 +32,48 @@
   line-height: 24px;
   margin: 0;
 }
+
+.formItems {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  align-self: stretch;
+  margin-bottom: 24px;
+}
 .field {
   display: flex;
-  width: 527px;
+  width: 553px;
   height: 60px;
   padding: 18px 337px 18px 18px;
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
   border-radius: 12px;
+  border: none;
   background: var(--Inputs, #f7f7f7);
+}
+.button {
+  display: flex;
+  width: 166px;
+  padding: 16px 16px;
+  border-radius: 200px;
+  background: var(--Button, #e44848);
+  color: var(--White, #fff);
+  justify-content: center;
+  align-items: center;
+  font-family: Inter;
+  letter-spacing: -0.08px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 24px;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+.button:hover {
+  background-color: #d84343;
+}
+.error {
+  color: #e44848;
 }

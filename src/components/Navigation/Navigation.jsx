@@ -6,9 +6,9 @@ export default function Navigation() {
   return (
     <nav className={css.list}>
       <div className={css.logo}>
-        <img src="/" alt="logo" />
+        <img src="/public/images/Logo.svg" alt="logo" />
       </div>
-      <div className={css.navlinks}>
+      <div className={css.links}>
         <NavLink
           to="/"
           className={({ isActive }) => clsx(css.link, isActive && css.active)}

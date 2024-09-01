@@ -69,7 +69,7 @@ export default function CamperDetailsPage() {
                 <IoMapOutline className={css.locationIcon} /> {camperLocation}
               </p>
             </div>
-            <p className={css.price}>€{price.toFixed(2)}</p>
+            <p className={css.price}>€{price.toFixed(2).replace(".", ",")}</p>
           </div>
         </div>
 
@@ -87,6 +87,7 @@ export default function CamperDetailsPage() {
           <p className={css.text}>{description}</p>
         </div>
       </div>
+
       <div className={css.moreInfo}>
         <ul className={css.links}>
           <NavLink
@@ -107,7 +108,7 @@ export default function CamperDetailsPage() {
           </NavLink>
         </ul>
       </div>
-      <div>
+      <div className={css.subContainer}>
         <Suspense
           fallback={
             <div>

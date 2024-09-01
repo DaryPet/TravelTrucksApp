@@ -1,6 +1,7 @@
 .container {
   margin: 120px 64px;
 }
+
 .wrap {
   margin-bottom: 60px;
 }
@@ -97,6 +98,10 @@
   position: relative;
   width: 100%;
   margin-bottom: 44px;
+}
+.subContainer {
+  display: flex;
+  gap: 24px;
 }
 .links {
   display: flex;
