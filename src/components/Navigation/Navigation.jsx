@@ -6,7 +6,7 @@ export default function Navigation() {
   return (
     <nav className={css.list}>
       <div className={css.logo}>
-        <img src="/public/images/Logo.svg" alt="logo" />
+        <img src="images/Logo.svg" alt="logo" />
       </div>
       <div className={css.links}>
         <NavLink
