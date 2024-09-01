@@ -11,7 +11,7 @@ import Filters from "../../components/Filters/Filters.jsx";
 export default function CatalogPage() {
   const dispatch = useDispatch();
   const campers = useSelector(selectCampers);
-  const [filtredCampers, setFiltredCampers] = useState(campers);
+  const [filtredCampers, setFiltredCampers] = useState([]);
   const itemsPerPage = useSelector(selectPaginationPage);
 
   useEffect(() => {
@@ -53,7 +53,8 @@ export default function CatalogPage() {
   return (
     <div className={css.catalog}>
       <Filters onFilterChange={handleFiltredChange} />
-      {filtredCampers.length > 0 && (
+
+      {filtredCampers.length > 0 ? (
         <div>
           <CamperList campers={paginatedCampers} />
           {paginatedCampers.length < filtredCampers.length && (
@@ -62,6 +63,8 @@ export default function CatalogPage() {
             </button>
           )}
         </div>
+      ) : (
+        <p className={css.noCampers}>Campers not found. Try another filter.</p>
       )}
     </div>
   );

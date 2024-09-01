@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import css from "./CamperCard.module.css";
 import { FaRegHeart, FaStar } from "react-icons/fa";
 import {
@@ -13,10 +14,33 @@ import { IoMapOutline } from "react-icons/io5";
 import { MdLocalGasStation } from "react-icons/md";
 
 export default function CamperCard({ camper }) {
+  const [isFavorite, setIsFavorite] = useState(false);
+
   const imageUrl =
     camper.gallery && camper.gallery.length > 0
       ? camper.gallery[0].thumb
       : "path/to/placeholder-image.jpg";
+
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+    setIsFavorite(favorites.some((favCamper) => favCamper.id === camper.id));
+  }, [camper.id]);
+
+  const handleFavoriteClick = () => {
+    const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    if (isFavorite) {
+      const updatedFavorite = favorites.filter(
+        (favCamper) => favCamper.id !== camper.id
+      );
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorite));
+      setIsFavorite(false);
+    } else {
+      favorites.push(camper);
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+      setIsFavorite(true);
+    }
+  };
 
   return (
     <div className={css.card}>
@@ -30,8 +54,15 @@ export default function CamperCard({ camper }) {
             <h3 className={css.name}>{camper.name}</h3>
             <p className={css.price}>
               €{camper.price.toFixed(2).replace(".", ",")}
-              <button className={css.favoriteButton}>
-                <FaRegHeart className={css.likeIcon} />
+              <button
+                className={css.favoriteButton}
+                onClick={handleFavoriteClick}
+              >
+                {isFavorite ? (
+                  <FaRegHeart className={css.likeIconActive} />
+                ) : (
+                  <FaRegHeart className={css.likeIcon} />
+                )}
               </button>
             </p>
           </div>

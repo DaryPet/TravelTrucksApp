@@ -73,12 +73,15 @@
   mix-blend-mode: multiply;
 }
 .favoriteButton {
-  background: none; /* Убирает фон */
+  background: none;
   border: none;
+  cursor: pointer;
 }
-.favoriteButton:hover {
+
+.likeIconActive {
   color: #e44848;
 }
+
 .moreButton {
   display: flex;
   width: 166px;
