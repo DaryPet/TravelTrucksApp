@@ -81,7 +81,6 @@ export default function CamperCard({ camper }) {
           </div>
           <div>
             <p className={css.description}>{camper.description}</p>
-
             <div className={css.features}>
               {camper.transmission && (
                 <span className={css.feature}>

@@ -6,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function BookingForm() {
   const handleSubmit = (values, actions) => {
-    console.log(values);
     try {
       toast.success("Your boonikg was successfully submited!", {
         position: "top-center",

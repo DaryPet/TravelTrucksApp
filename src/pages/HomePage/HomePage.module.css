@@ -31,12 +31,14 @@
   font-size: 48px;
   font-weight: 600;
   line-height: 32px;
+  margin: 0;
 }
 .subtitle {
   color: var(--inputs);
   font-size: 24px;
   font-weight: 600;
   line-height: 32px;
+  margin: 0;
 }
 
 .button {

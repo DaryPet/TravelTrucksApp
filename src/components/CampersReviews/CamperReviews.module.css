@@ -27,28 +27,20 @@
   border-radius: 60px;
   background: var(--badges);
   color: var(--button);
-
-  /* H2 */
-  font-family: Inter;
   font-size: 24px;
-  font-style: normal;
   font-weight: 600;
-  line-height: 32px; /* 133.333% */
+  line-height: 32px;
 }
 .name {
   margin: 0;
-  color: var(--Main, #101828);
-  font-family: Inter;
+  color: var(--main);
   font-size: 16px;
-  font-style: normal;
   font-weight: 500;
-  line-height: 24px; /* 150% */
+  line-height: 24px;
 }
 .comment {
-  color: var(--Text, #475467);
-  font-family: Inter;
+  color: var(--text);
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
   line-height: 24px;
   margin: 0;
@@ -59,10 +51,10 @@
 }
 
 .activeStar {
-  color: #ffc107;
+  color: var(--rating);
   font-size: 16px;
 }
 .inactiveStar {
-  color: #f2f4f7;
+  color: var(--badges);
   font-size: 16px;
 }
