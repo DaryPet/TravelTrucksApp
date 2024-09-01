@@ -20,13 +20,11 @@
 .link {
   color: var(--Main, #101828);
   text-align: center;
-
-  /* Body 2 */
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
-  line-height: 24px; /* 150% */
+  line-height: 24px;
   text-decoration: none;
 }
 .active {

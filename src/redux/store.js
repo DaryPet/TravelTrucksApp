@@ -12,6 +12,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import paginationReducer from "./paginationSlice.js";
 
 const filtersPersistConfig = {
   key: "filters",
@@ -27,6 +28,7 @@ export const store = configureStore({
   reducer: {
     campers: campersReducer,
     filters: persistedFiltersReducer,
+    pagination: paginationReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

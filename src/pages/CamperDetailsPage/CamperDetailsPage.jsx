@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, NavLink, Outlet } from "react-router-dom";
 import { fetchCamperById } from "../../services/api.js";
-import { Suspense } from "react";
 import { IoMapOutline } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import clsx from "clsx";
@@ -13,27 +12,20 @@ export default function CamperDetailsPage() {
   const [camper, setCamper] = useState();
   const { id } = useParams();
   const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchCamperDetails() {
       try {
         setError(false);
-        setLoading(true);
+
         const response = await fetchCamperById(id);
         setCamper(response);
       } catch (error) {
         setError(true);
-      } finally {
-        setLoading(false);
       }
     }
     fetchCamperDetails();
   }, [id]);
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
 
   if (error) {
     return <p>Error loading camper details.</p>;
@@ -109,15 +101,8 @@ export default function CamperDetailsPage() {
         </ul>
       </div>
       <div className={css.subContainer}>
-        <Suspense
-          fallback={
-            <div>
-              <p>Loading...</p>
-            </div>
-          }
-        >
-          <Outlet />
-        </Suspense>
+        <Outlet />
+
         <BookingForm />
       </div>
     </div>

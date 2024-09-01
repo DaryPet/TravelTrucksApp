@@ -8,20 +8,16 @@ import clsx from "clsx";
 export default function CampersReviews() {
   const { id } = useParams();
   const [reviews, setReviews] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     async function fetchReviewsData() {
       try {
-        setLoading(true);
         setError(false);
         const camper = await fetchCamperById(id);
         setReviews(camper.reviews);
       } catch (error) {
         setError(true);
-      } finally {
-        setLoading(false);
       }
     }
     fetchReviewsData();
@@ -29,9 +25,8 @@ export default function CampersReviews() {
 
   return (
     <div className={css.container}>
-      {loading && <p>Loading equipment...</p>}
       {error && <p>Error fetching equipment.</p>}
-      {reviews.length > 0 ? (
+      {reviews.length > 0 && (
         <ul className={css.list}>
           {reviews.map((review, index) => (
             <li key={index} className={css.item}>
@@ -56,8 +51,6 @@ export default function CampersReviews() {
             </li>
           ))}
         </ul>
-      ) : (
-        <p>No reviews avaliable</p>
       )}
     </div>
   );

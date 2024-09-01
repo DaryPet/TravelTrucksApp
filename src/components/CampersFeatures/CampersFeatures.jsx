@@ -17,20 +17,16 @@ import css from "./CampersFeatures.module.css";
 export default function CampersFeatures() {
   const { id } = useParams();
   const [features, setFeatures] = useState({});
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     async function fetchFeaturesData() {
       try {
-        setLoading(true);
         setError(false);
         const camper = await fetchCamperById(id);
         setFeatures(camper);
       } catch (error) {
         setError(true);
-      } finally {
-        setLoading(false);
       }
     }
     fetchFeaturesData();
@@ -52,9 +48,8 @@ export default function CampersFeatures() {
 
   return (
     <div className={css.container}>
-      {loading && <p>Loading equipment...</p>}
       {error && <p>Error fetching equipment.</p>}
-      {features ? (
+      {features && (
         <>
           <div className={css.features}>
             <ul className={css.list}>
@@ -114,8 +109,6 @@ export default function CampersFeatures() {
             </ul>
           </div>
         </>
-      ) : (
-        <p>No equipment information available.</p>
       )}
     </div>
   );

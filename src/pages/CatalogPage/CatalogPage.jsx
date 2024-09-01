@@ -4,13 +4,15 @@ import { fetchCampers } from "../../redux/camperSlice.js";
 import CamperList from "../../components/CamperList/CamperList.jsx";
 import css from "./CatalogPage.module.css";
 import { selectCampers } from "../../redux/selectors.js";
+import { addValue } from "../../redux/paginationSlice.js";
+import { selectPaginationPage } from "../../redux/paginationSelector.js";
 import Filters from "../../components/Filters/Filters.jsx";
-// import Pagination from "../../components/Pagination/Pagination.jsx";
 
 export default function CatalogPage() {
   const dispatch = useDispatch();
   const campers = useSelector(selectCampers);
   const [filtredCampers, setFiltredCampers] = useState(campers);
+  const itemsPerPage = useSelector(selectPaginationPage);
 
   useEffect(() => {
     dispatch(fetchCampers());
@@ -41,15 +43,25 @@ export default function CatalogPage() {
     });
     setFiltredCampers(filtred);
   };
+
+  const paginatedCampers = filtredCampers.slice(0, itemsPerPage);
+
+  const handleLoadMore = () => {
+    dispatch(addValue(4));
+  };
+
   return (
     <div className={css.catalog}>
       <Filters onFilterChange={handleFiltredChange} />
-      {filtredCampers.length > 0 ? (
-        <CamperList campers={filtredCampers} />
-      ) : (
-        <p className={css.noCampers}>
-          Sorry, no campers match your search! Try another one!
-        </p>
+      {filtredCampers.length > 0 && (
+        <div>
+          <CamperList campers={paginatedCampers} />
+          {paginatedCampers.length < filtredCampers.length && (
+            <button onClick={handleLoadMore} className={css.loadMore}>
+              Load More
+            </button>
+          )}
+        </div>
       )}
     </div>
   );

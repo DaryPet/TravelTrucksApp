@@ -9,3 +9,18 @@
   text-align: center;
   margin-top: 320px;
 }
+.loadMore {
+  margin-top: 40px;
+  display: block;
+  margin: 24px auto 0;
+  padding: 16px 32px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 200px;
+  border: 1px solid var(--Gray-light, #dadde1);
+  background-color: var(--White, #fff);
+  cursor: pointer;
+}
+.loadMore:hover {
+  border: 1px solid #d84343;
+}
