@@ -25,8 +25,8 @@
   width: 60px;
   height: 60px;
   border-radius: 60px;
-  background: var(--Badges, #f2f4f7);
-  color: var(--Button, #e44848);
+  background: var(--badges);
+  color: var(--button);
 
   /* H2 */
   font-family: Inter;

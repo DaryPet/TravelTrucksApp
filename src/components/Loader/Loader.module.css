@@ -19,8 +19,8 @@
 }
 
 .spinner {
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid var(--Button, #e44848);
+  border: 8px solid var(--inputs);
+  border-top: 8px solid var(--button);
   border-radius: 50%;
   width: 60px;
   height: 60px;

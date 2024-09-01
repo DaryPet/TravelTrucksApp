@@ -45,7 +45,7 @@ export default function Filters({ onFilterChange }) {
         </div>
 
         <div className={css.equipmentWrapper}>
-          <h3 className={css.qeuipmentText}>Vehicle equipment</h3>
+          <h3 className={css.text}>Vehicle equipment</h3>
           <div className={css.items}>
             <label htmlFor="AC">
               <Field

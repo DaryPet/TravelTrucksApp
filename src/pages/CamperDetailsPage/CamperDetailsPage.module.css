@@ -20,10 +20,8 @@
   gap: 16px;
 }
 .title {
-  color: var(--Main, #101828);
-  font-family: Inter;
+  color: var(--main);
   font-size: 24px;
-  font-style: normal;
   font-weight: 600;
   line-height: 32px;
   margin: 0;
@@ -32,46 +30,33 @@
   margin: 0;
 }
 .starIcon {
-  color: #ffc107;
+  color: var(--rating);
 }
 .reviews {
   display: flex;
   align-items: flex-start;
   gap: 16px;
-  color: var(--Main, #101828);
-
-  /* Body */
-  font-family: Inter;
+  color: var(--main);
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
-  line-height: 24px; /* 150% */
+  line-height: 24px;
   margin: 0;
 }
 .price {
-  color: var(--Main, #101828);
-
-  /* H2 */
-  font-family: Inter;
+  color: var(--main);
   font-size: 24px;
-  font-style: normal;
   font-weight: 600;
-  line-height: 32px; /* 133.333% */
+  line-height: 32px;
   margin: 0;
 }
 .description {
-  color: var(--Text, #475467);
-
-  /* Body */
-  font-family: Inter;
+  color: var(--text);
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
-  line-height: 24px; /* 150% */
+  line-height: 24px;
 }
 .gallery {
   display: flex;
-  /* width: 1312px; */
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 28px;
@@ -110,13 +95,11 @@
   margin: 0;
 }
 .link {
-  font-family: Inter;
   font-size: 20px;
-  font-style: normal;
   font-weight: 600;
   line-height: 24px;
   text-decoration: none;
-  color: var(--Main, #101828);
+  color: var(--main);
   padding-bottom: 24px;
   border-bottom: 1px solid transparent;
   position: relative;
@@ -128,9 +111,9 @@
   left: 0;
   width: 100%;
   height: 1px;
-  background-color: #dadde1;
+  background-color: var(--gray-light);
   z-index: -1;
 }
 .linkActive {
-  border-bottom: 5px solid var(--Button, #e44848);
+  border-bottom: 5px solid var(--button);
 }
