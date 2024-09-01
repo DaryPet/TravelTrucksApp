@@ -12,7 +12,7 @@ export default function HomePage() {
           </h2>
         </div>
 
-        <Link to="/catalog" className={css.button}>
+        <Link to="/catalog/" className={css.button}>
           View Now
         </Link>
       </div>

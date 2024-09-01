@@ -13,6 +13,7 @@ export default function CatalogPage() {
   const campers = useSelector(selectCampers);
   const [filtredCampers, setFiltredCampers] = useState([]);
   const itemsPerPage = useSelector(selectPaginationPage);
+  const [filtersApplied, setFiltersApplied] = useState(false);
 
   useEffect(() => {
     dispatch(fetchCampers());
@@ -42,6 +43,7 @@ export default function CatalogPage() {
       return matchLocation && matchEquipment && matchVehicleType;
     });
     setFiltredCampers(filtred);
+    setFiltersApplied(true);
   };
 
   const paginatedCampers = filtredCampers.slice(0, itemsPerPage);
@@ -54,17 +56,21 @@ export default function CatalogPage() {
     <div className={css.catalog}>
       <Filters onFilterChange={handleFiltredChange} />
 
-      {filtredCampers.length > 0 ? (
-        <div>
-          <CamperList campers={paginatedCampers} />
-          {paginatedCampers.length < filtredCampers.length && (
-            <button onClick={handleLoadMore} className={css.loadMore}>
-              Load More
-            </button>
-          )}
-        </div>
-      ) : (
+      {filtersApplied && filtredCampers.length === 0 ? (
         <p className={css.noCampers}>Campers not found. Try another filter.</p>
+      ) : (
+        <>
+          {filtredCampers.length > 0 && (
+            <div>
+              <CamperList campers={paginatedCampers} />
+              {paginatedCampers.length < filtredCampers.length && (
+                <button onClick={handleLoadMore} className={css.loadMore}>
+                  Load More
+                </button>
+              )}
+            </div>
+          )}
+        </>
       )}
     </div>
   );

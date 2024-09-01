@@ -95,7 +95,7 @@ export default function CamperCard({ camper }) {
                   Bathroom
                 </span>
               )}
-              {camper.tv && (
+              {camper.TV && (
                 <span className={css.feature}>
                   <BsTv className={css.icon} />
                   TV

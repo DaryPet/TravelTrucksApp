@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, NavLink, Outlet } from "react-router-dom";
+import { useParams, NavLink, Outlet, useLocation } from "react-router-dom";
 import { fetchCamperById } from "../../services/api.js";
 import { IoMapOutline } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
@@ -12,6 +12,7 @@ export default function CamperDetailsPage() {
   const [camper, setCamper] = useState();
   const { id } = useParams();
   const [error, setError] = useState(false);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     async function fetchCamperDetails() {
@@ -84,7 +85,9 @@ export default function CamperDetailsPage() {
         <ul className={css.links}>
           <NavLink
             className={({ isActive }) =>
-              clsx(css.link, { [css.linkActive]: isActive })
+              clsx(css.link, {
+                [css.linkActive]: isActive || pathname === `/catalog/${id}`,
+              })
             }
             to="features"
           >

@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { lazy } from "react";
 import Layout from "../Layout/Layout.jsx";
-// import Loader from "./components/Loader/Loader.jsx"
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage.jsx"));
 const CatalogPage = lazy(() =>
@@ -29,6 +28,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/catalog" element={<CatalogPage />} />
           <Route path="/catalog/:id" element={<CamperDetailsPage />}>
+            <Route index element={<CampersFeatures />} />
             <Route path="reviews" element={<CampersReviews />} />
             <Route path="features" element={<CampersFeatures />} />
           </Route>

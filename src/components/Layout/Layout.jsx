@@ -7,15 +7,7 @@ export default function Layout({ children }) {
   return (
     <div className={css.container}>
       <Navigation />
-      <Suspense
-        fallback={
-          <div>
-            <Loader />
-          </div>
-        }
-      >
-        {children}
-      </Suspense>
+      <Suspense fallback={<Loader />}>{children}</Suspense>
     </div>
   );
 }

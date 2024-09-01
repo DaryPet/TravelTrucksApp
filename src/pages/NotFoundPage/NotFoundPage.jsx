@@ -1,12 +1,9 @@
-import { Link } from "react-router-dom";
+import notFound from "../../../public/images/notFound.webp";
 
 export default function NotFoundPage() {
   return (
     <div>
-      <p>Ooops, page not found...</p>
-      <p>
-        Please visit our <Link to="/">Home Page</Link>
-      </p>
+      <img src={notFound} alt="notFound" />
     </div>
   );
 }
