@@ -2,10 +2,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
 body {
+  display: flex;
   font-family: var(--font-family);
   margin: 0;
+  padding: 0;
+  justify-content: center;
+  box-sizing: border-box;
 }
 :root {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
   --main: #101828;
   --text: #475467;
   --white: #fff;
