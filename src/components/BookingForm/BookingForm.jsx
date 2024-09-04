@@ -97,7 +97,7 @@ export default function BookingForm() {
                   <Field
                     as="textarea"
                     name="comment"
-                    className={css.field}
+                    className={css.fieldTextarea}
                     placeholder="Comment"
                   />
                   <ErrorMessage name="comment" component="div" />

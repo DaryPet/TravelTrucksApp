@@ -41,7 +41,7 @@
 
 .button {
   display: flex;
-  width: 166px;
+  width: 173px;
   padding: 16px 16px;
   border-radius: 200px;
   background: var(--button);
@@ -53,6 +53,11 @@
   text-decoration: none;
   transition: background-color 0.3s ease;
   border: none;
+  color: var(--White, #fff);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  letter-spacing: -0.08px;
 }
 .button:hover {
   background-color: var(--button-hover);

@@ -49,6 +49,19 @@
   border: none;
   background: var(--inputs);
 }
+.fieldTextarea {
+  display: flex;
+  width: 553px;
+  height: 60px;
+  padding: 18px 308px 76px 18px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 12px;
+  border: none;
+  background: var(--inputs);
+}
+
 .button {
   display: flex;
   width: 166px;
@@ -61,7 +74,7 @@
   letter-spacing: -0.08px;
   text-align: center;
   text-decoration: none;
-  margin-top: 24px;
+  margin: 0 auto;
   transition: background-color 0.3s ease;
   border: none;
 }
