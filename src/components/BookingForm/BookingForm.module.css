@@ -49,6 +49,7 @@
   border: none;
   background: var(--inputs);
 }
+
 .fieldTextarea {
   display: flex;
   width: 553px;

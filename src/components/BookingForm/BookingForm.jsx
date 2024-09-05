@@ -3,8 +3,14 @@ import * as Yup from "yup";
 import css from "./BookingForm.module.css";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ReactDatePicker from "react-datepicker";
+import { useState } from "react";
+// import { newDate } from "react-datepicker/dist/date_utils";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function BookingForm() {
+  const [startDate, setStartDate] = useState(null);
+
   const handleSubmit = (values, actions) => {
     try {
       toast.success("Your boonikg was successfully submited!", {
@@ -12,6 +18,7 @@ export default function BookingForm() {
       });
 
       actions.resetForm();
+      setStartDate(null);
     } catch (error) {
       toast.error("Sumthing went wrong. Try again!", {
         position: "top-center",
@@ -24,18 +31,18 @@ export default function BookingForm() {
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Name is required"),
     email: Yup.string().email().required("Email is required"),
-    bookingDate: Yup.date().required("Booking date is required"),
+    bookingDate: Yup.date().required("Booking date is required").nullable(),
     comment: Yup.string(),
   });
 
   return (
     <>
       <Formik
-        initialValues={{ name: "", email: "", bookingDate: "", comment: "" }}
+        initialValues={{ name: "", email: "", bookingDate: null, comment: "" }}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, setFieldValue }) => (
           <div className={css.container}>
             <div className={css.titles}>
               <h3 className={css.title}>Book your campervan now</h3>
@@ -75,16 +82,16 @@ export default function BookingForm() {
                 </div>
                 <div className={css.formItem}>
                   <label htmlFor="bookingDate"></label>
-                  <Field
-                    type="date"
-                    name="bookingDate"
+                  <ReactDatePicker
+                    selected={startDate}
+                    onChange={(date) => {
+                      setStartDate(date);
+                      setFieldValue("bookingDate", date);
+                    }}
+                    minDate={new Date()}
+                    placeholderText="Select a date*"
+                    dateFormat="dd/mm/yyyy"
                     className={css.field}
-                    placeholder="Booking Date*"
-                    // onFocus={(e) => (e.target.type = "date")}
-                    // onBlur={(e) =>
-                    //   (e.target.type = e.target.value ? "date" : "text")
-                    // }
-                    // onChange={(e) => (e.target.type = "date")}
                   />
                   <ErrorMessage
                     name="bookingDate"
