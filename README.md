@@ -59,7 +59,7 @@ The built files will be located in the dist folder.
 5. Deploy to Vercel
    The project is deployed on Vercel and can be accessed at the following URL:
 
-https://your-deployment-url.vercel.app
+(https://travel-trucks-app-tan.vercel.app/)
 
 Project Structure
 
